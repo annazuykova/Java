@@ -5,34 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8068bc6-ecb5-4b95-a0f6-65d62b43d12e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/FinanceReport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/FinanceReportProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/MyException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Payment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/StringProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/FinanceReportProcessorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/FinanceReportTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/PaymentTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/StringProcessorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/FinanceReport.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/FinanceReportProcessor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/MyException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Payment.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/StringProcessor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/example/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/FinanceReportProcessorTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/FinanceReportTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/PaymentTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/StringProcessorTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
