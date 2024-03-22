@@ -45,6 +45,8 @@ public class CollectionsDemoTest {
                 new Human("Rukola", "Karina", "Salatovna", 45),
                 new Human("Rukola", "Karina", "Salatovna", 44));
         assertEquals(listRes, CollectionsDemo.copyWithoutHuman(list, new Human("Ivanov", "Ivan", "Petrovich", 22)));
+        list.get(0).setAge(25);
+        System.out.println(listRes.get(0).getAge());
     }
 
     @Test
@@ -99,8 +101,8 @@ public class CollectionsDemoTest {
         Collections.addAll(set2, 2, 4, 6, 8, 0);
         HashSet<Integer> set3 = new HashSet<>();
         Collections.addAll(set3, 1, 3, 5, 7, 9);
-        List<HashSet<Integer>> list = List.of(set1, set2, set3);
-        List<HashSet<Integer>> listRes = List.of(set2);
+        List<Set<Integer>> list = List.of(set1, set2, set3);
+        List<Set<Integer>> listRes = List.of(set2);
         assertEquals(listRes, CollectionsDemo.setWithoutIntersection(list, set3));
     }
 
@@ -112,7 +114,7 @@ public class CollectionsDemoTest {
         Collections.addAll(set2, 2, 4, 6, 8, 0);
         HashSet<Integer> set3 = new HashSet<>();
         Collections.addAll(set3, 1, 3, 5, 7, 9);
-        List<HashSet<Integer>> list = List.of(set1, set2, set3);
+        List<Set<Integer>> list = List.of(set1, set2, set3);
         assertEquals(new ArrayList<HashSet<Integer>>(), CollectionsDemo.setWithoutIntersection(list, set1));
     }
 
@@ -126,7 +128,7 @@ public class CollectionsDemoTest {
         Collections.addAll(set3, 1, 3, 5, 7, 9);
         HashSet<Integer> set4 = new HashSet<>();
         Collections.addAll(set4, 11, 15, 2);
-        List<HashSet<Integer>> list = List.of(set1, set2, set3);
+        List<Set<Integer>> list = List.of(set1, set2, set3);
         List<HashSet<Integer>> listRes = List.of(set2, set3);
         assertEquals(listRes, CollectionsDemo.setWithoutIntersection(list, set4));
     }
@@ -137,7 +139,7 @@ public class CollectionsDemoTest {
         Collections.addAll(set1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0);
         HashSet<Integer> set2 = new HashSet<>();
         Collections.addAll(set2, 3, 4, 6, 8, 0);
-        List<HashSet<Integer>> list = List.of(set1, set2);
+        List<Set<Integer>> list = List.of(set1, set2);
         CollectionsDemo.setWithoutIntersection(list, null);
     }
 
@@ -147,7 +149,7 @@ public class CollectionsDemoTest {
         Collections.addAll(set2, 3, 4, 6, 8, 0);
         HashSet<Integer> set3 = new HashSet<>();
         Collections.addAll(set3, 1, 3, 5, 7, 9);
-        List<HashSet<Integer>> list = List.of(null, set2, set3);
+        List<Set<Integer>> list = List.of(null, set2, set3);
         CollectionsDemo.setWithoutIntersection(list, set2);
     }
 
@@ -230,17 +232,17 @@ public class CollectionsDemoTest {
         map.put(2, new Human("Rukola", "Karina", "Salatovna", 18));
         map.put(3, new Human("Ivanov", "Ivan", "Petrovich", 22));
         map.put(4, new Human("Eshevika", "Malina", "Gennadievna", 90));
-        List<Integer> list = List.of(1, 2);
+        List<Integer> list = List.of(2,3, 4);
         assertEquals(list, CollectionsDemo.ListId(map));
     }
 
     @Test
     public void listId2() {
         Map<Integer, Human> map = new HashMap<>();
-        map.put(1, new Human("Krasnova", "Sena", "Olegovna", 52));
-        map.put(2, new Human("Rukola", "Karina", "Salatovna", 38));
-        map.put(3, new Human("Ivanov", "Ivan", "Petrovich", 22));
-        map.put(4, new Human("Eshevika", "Malina", "Gennadievna", 90));
+        map.put(1, new Human("Krasnova", "Sena", "Olegovna", 12));
+        map.put(2, new Human("Rukola", "Karina", "Salatovna", 17));
+        map.put(3, new Human("Ivanov", "Ivan", "Petrovich", 2));
+        map.put(4, new Human("Eshevika", "Malina", "Gennadievna", 9));
         assertEquals(new ArrayList<>(), CollectionsDemo.ListId(map));
     }
 
@@ -251,7 +253,7 @@ public class CollectionsDemoTest {
         map.put(2, new Human("Rukola", "Karina", "Salatovna", 18));
         map.put(3, new Human("Ivanov", "Ivan", "Petrovich", 19));
         map.put(4, new Human("Eshevika", "Malina", "Gennadievna", 18));
-        List<Integer> list = List.of(1, 2, 4);
+        List<Integer> list = List.of(2,3,4);
         assertEquals(list, CollectionsDemo.ListId(map));
     }
 
@@ -278,10 +280,10 @@ public class CollectionsDemoTest {
         map.put(3, new Human("Ivanov", "Ivan", "Petrovich", 10));
         map.put(4, new Human("Eshevika", "Malina", "Gennadievna", 56));
         Map<Integer, Integer> mapRes = new HashMap<>();
-        mapRes.put(1, map.get(1).getAge());
-        mapRes.put(2, map.get(2).getAge());
-        mapRes.put(3, map.get(3).getAge());
-        mapRes.put(4, map.get(4).getAge());
+        mapRes.put(1, 12);
+        mapRes.put(2, 10);
+        mapRes.put(3, 10);
+        mapRes.put(4, 56);
         assertEquals(mapRes, CollectionsDemo.MapOfAges(map));
     }
 
@@ -290,12 +292,12 @@ public class CollectionsDemoTest {
         Map<Integer, Human> map = new HashMap<>();
         map.put(1, new Human("Krasnova", "Sena", "Olegovna", 11));
         map.put(2, new Human("Rukola", "Karina", "Salatovna", 10));
-        map.put(3, new Human("Ivanov", "Ivan", "Petrovich", 0));
+        map.put(30, new Human("Ivanov", "Ivan", "Petrovich", 0));
         map.put(4, new Human("Eshevika", "Malina", "Gennadievna", 12));
         Map<Integer, Integer> mapRes = new HashMap<>();
         mapRes.put(1, map.get(1).getAge());
         mapRes.put(2, map.get(2).getAge());
-        mapRes.put(3, map.get(3).getAge());
+        mapRes.put(30, map.get(30).getAge());
         mapRes.put(4, map.get(4).getAge());
         assertEquals(mapRes, CollectionsDemo.MapOfAges(map));
     }
@@ -351,7 +353,7 @@ public class CollectionsDemoTest {
 
     @Test
     public void mapOfAgesLists3() {
-        HashSet<Human> set1 = new HashSet<>();
+        Set<Human> set1 = new HashSet<>();
         Map<Integer, List<Human>> map = new HashMap<>();
         assertEquals(map, CollectionsDemo.MapOfAgesLists(set1));
     }
