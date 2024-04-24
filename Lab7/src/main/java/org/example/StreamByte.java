@@ -4,24 +4,25 @@ import java.io.*;
 
 public class StreamByte {
 
-    public static void arrayToStreamByte(int[] arr, File file) {
-        try (OutputStream stream = new FileOutputStream(file)) {
+    public static void arrayToStreamByte(int[] arr, String file) throws IOException {
+        try (DataOutputStream stream = new DataOutputStream(new FileOutputStream(file))) {
             for (int i : arr) {
-                stream.write(i);
+                stream.writeInt(i);
             }
         } catch (IOException e) {
-            System.out.println("Ошибка");
+            throw new IOException("Ошибка в работе с потоком");
         }
     }
 
-    public static int[] getArrayFromStreamByte(File file, int n) {
+    public static int[] getArrayFromStreamByte(String file, int n) throws IOException {
+        if (n < 0) throw new IllegalArgumentException("n некорректный");
         int[] arr = new int[n];
-        try (InputStream stream = new FileInputStream(file)) {
-            for (int i = 0; stream.available() > 0; i++) {
-                arr[i] = stream.read();
+        try (DataInputStream stream = new DataInputStream(new FileInputStream(file))) {
+            for (int i = 0; i < n; i++) {
+                arr[i] = stream.readInt();
             }
         } catch (IOException e) {
-            System.out.println("Ошибка");
+            throw new IOException("Ошибка в работе с потоком");
         }
         return arr;
     }
