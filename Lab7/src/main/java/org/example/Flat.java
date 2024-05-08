@@ -42,11 +42,16 @@ public class Flat implements Serializable {
 
     @Override
     public String toString() {
-        return "Flat{" +
-                "number=" + number +
-                ", square=" + square +
-                ", people=" + people +
-                '}';
+        StringBuilder str = new StringBuilder("Flat{ number = ");
+        str.append(number);
+        str.append(", square = ");
+        str.append(", people = ");
+        for (Person p : people) {
+            str.append(p);
+            str.append(", ");
+        }
+        str.append(" }");
+        return str.toString();
     }
 
     @Override

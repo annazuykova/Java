@@ -68,13 +68,19 @@ public class Person implements Serializable {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", otchestvo='" + otchestvo + '\'' +
-                ", date=" + date +
-                ", month=" + month +
-                ", year=" + year +
-                '}';
+        StringBuilder str =new StringBuilder("Person{ lastName = ");
+        str.append(lastName);
+        str.append(", firstName = ");
+        str.append(firstName);
+        str.append(", otchestvo = ");
+        str.append(otchestvo);
+        str.append(", date = ");
+        str.append(date);
+        str.append(", month = ");
+        str.append(month);
+        str.append(", year = ");
+        str.append(year);
+        str.append(" }");
+        return str.toString();
     }
 }

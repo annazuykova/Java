@@ -50,12 +50,16 @@ public class House implements Serializable {
 
     @Override
     public String toString() {
-        return "House{" +
-                "numberHouse='" + numberHouse + '\'' +
-                ", address='" + address + '\'' +
-                ", mainPerson=" + mainPerson +
-                ", flats=" + flats +
-                '}';
+        StringBuilder str =new StringBuilder("House{ numberHouse = ");
+        str.append(numberHouse);
+        str.append(", address = ");
+        str.append(address);
+        str.append(", mainPerson = ");
+        str.append(mainPerson);
+        str.append(", flats = ");
+        str.append(flats);
+        str.append(" }");
+        return str.toString();
     }
 
     @Override

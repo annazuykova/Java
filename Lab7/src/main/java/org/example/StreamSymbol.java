@@ -3,17 +3,17 @@ package org.example;
 import java.io.*;
 
 public class StreamSymbol {
-    public static void arrayToStreamSymbol(int[] arr, String file) throws IOException {
+    public static void arrayToStreamSymbol(int[] arr, String file) {
         try (FileWriter stream = new FileWriter(file)) {
             for (int i : arr) {
                 stream.write(i + " ");
             }
         } catch (IOException e) {
-            throw new IOException("Ошибка в работе с потоком");
+            e.printStackTrace();
         }
     }
 
-    public static int[] getArrayFromStreamSymbol(String file, int n) throws IOException {
+    public static int[] getArrayFromStreamSymbol(String file, int n) {
         if (n < 0) throw new IllegalArgumentException("n некорректный");
         int[] res = new int[n];
         try (BufferedReader stream = new BufferedReader(new FileReader(file))) {
@@ -23,44 +23,35 @@ public class StreamSymbol {
                 res[i] = Integer.parseInt(arr[i]);
             }
         } catch (IOException e) {
-            throw new IOException("Ошибка в работе с потоком");
+            e.printStackTrace();
         }
         return res;
     }
 
-    public static int[] readArray(String file, int n, int pos) throws IOException {
+    public static int[] readArray(String file, int n, int pos) {
         if (n < 0) throw new IllegalArgumentException("n некорректный");
         if (pos < 0) throw new IllegalArgumentException("pos некорректный");
         int[] res = new int[n - pos];
         try (RandomAccessFile raf = new RandomAccessFile(file, "r")) {
-            raf.seek(pos + 1);
-            String line = raf.readLine();
-            String[] arr = line.split(" ");
+            raf.seek(pos * 4L);
             for (int i = 0; i < n - pos; i++) {
-                res[i] = Integer.parseInt(arr[i]);
+                res[i] = raf.readInt();
             }
         } catch (IOException e) {
-            throw new IOException("Ошибка в работе с потоком");
+            e.printStackTrace();
         }
         return res;
     }
 
-    public static File[] getListOfFile(String dir, String ext) {
-        class Filter implements FilenameFilter {
-            private String extension;
-
-            public Filter(String extension) {
-                this.extension = extension;
-            }
-
+    public static File[] getListOfFile(String dir, String extension) {
+        File[] listFiles;
+        File directory = new File(dir);
+        listFiles = directory.listFiles(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
                 return name.endsWith(extension);
             }
-        }
-        File file = new File(dir);
-        File[] listFiles = file.listFiles(new Filter(ext));
-
+        });
         return listFiles;
     }
 
