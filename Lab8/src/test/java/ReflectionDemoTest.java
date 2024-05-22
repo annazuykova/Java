@@ -1,6 +1,8 @@
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -33,7 +35,7 @@ public class ReflectionDemoTest {
 
     @Test
     public void getPublicMethodsTestOne() {
-        List<String> expected = List.of("getName", "equals", "hashCode", "setName", "setFamilia",
+        List<String> expected = Arrays.asList("getName", "equals", "hashCode", "setName", "setFamilia",
                 "setAge", "setOtchestvo", "getAge", "getOtchestvo", "getFamilia", "wait", "wait",
                 "wait", "toString", "getClass", "notify", "notifyAll");
         List<String> result = ReflectionDemo.getPublicMethods(new Human("Krasnova", "Sena", "Olegovna", 12));
@@ -42,7 +44,7 @@ public class ReflectionDemoTest {
 
     @Test
     public void getPublicMethodsTestTwo() {
-        List<String> expected = List.of("getName", "equals", "hashCode", "setName", "setFamilia",
+        List<String> expected = Arrays.asList("getName", "equals", "hashCode", "setName", "setFamilia",
                 "setAge", "setOtchestvo", "getAge", "getOtchestvo", "getFamilia", "getFaculty", "setFaculty", "wait", "wait",
                 "wait", "toString", "getClass", "notify", "notifyAll");
         List<String> result = ReflectionDemo.getPublicMethods(new Student("Krasnova", "Sena", "Olegovna", 12, "FCTK"));
@@ -51,25 +53,31 @@ public class ReflectionDemoTest {
 
     @Test
     public void getPublicMethodsTestThree() {
-        List<String> expected = List.of("equals", "hashCode", "wait", "wait",
+        List<String> expected = Arrays.asList("equals", "hashCode", "wait", "wait",
                 "wait", "toString", "getClass", "notify", "notifyAll");
         List<String> result = ReflectionDemo.getPublicMethods(new Object());
-        assertTrue(expected.containsAll(result) && result.containsAll(expected));
+        Collections.sort(expected);
+        Collections.sort(result);
+        assertEquals(expected,result);
     }
 
 
     @Test
     public void getListSuperClassesTestOne() throws ClassNotFoundException {
-        List<String> expected = List.of("Human", "java.lang.Object");
+        List<String> expected = Arrays.asList("Human", "Object");
         List<String> result = ReflectionDemo.getListSuperClasses(new Student("Krasnova", "Sena", "Olegovna", 12, "Math"));
-        assertTrue(expected.containsAll(result) && result.containsAll(expected));
+        Collections.sort(expected);
+        Collections.sort(result);
+        assertEquals(expected,result);
     }
 
     @Test
     public void getListSuperClassesTestTwo() throws ClassNotFoundException {
-        List<String> expected = List.of("java.lang.Number", "java.lang.Object");
+        List<String> expected = Arrays.asList("Number", "Object");
         List<String> result = ReflectionDemo.getListSuperClasses(1);
-        assertTrue(expected.containsAll(result) && result.containsAll(expected));
+        Collections.sort(expected);
+        Collections.sort(result);
+        assertEquals(expected,result);
     }
 
     @Test(expected = NullPointerException.class)

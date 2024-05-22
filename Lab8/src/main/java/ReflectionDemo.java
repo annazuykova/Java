@@ -19,13 +19,13 @@ public class ReflectionDemo {
         }
         return res;
     }
-    public static List<String> getListSuperClasses(Object o) throws ClassNotFoundException,NullPointerException {
+    public static List<String> getListSuperClasses(Object o) throws NullPointerException {
         List<String> res = new ArrayList<>();
-            String superClassName = o.getClass().getSuperclass().getName();
-            res.add(superClassName);
-            while (!superClassName.equals("java.lang.Object")) {
-                superClassName = Class.forName(superClassName).getSuperclass().getName();
-                res.add(superClassName);
+            Class<?> superclass = o.getClass().getSuperclass();
+            res.add(superclass.getSimpleName());
+            while (!superclass.getSimpleName().equals("Object")) {
+                superclass = superclass.getSuperclass();
+                res.add(superclass.getSimpleName());
             }
         return res;
     }
