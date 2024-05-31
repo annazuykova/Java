@@ -1,10 +1,5 @@
 import java.util.Objects;
 
-enum GENDER{
-    MAN,
-    WOMAN
-}
-
 public class Human {
     private String familia;
     private String name;
