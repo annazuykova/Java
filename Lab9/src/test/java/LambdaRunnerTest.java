@@ -44,15 +44,15 @@ public class LambdaRunnerTest {
 
     @Test
     public void runFunctionGetAgeHumansTest1() {
-        assertEquals(23, (int) LambdaRunner.runFunction(LambdaDemo.getAgeHuman,
+        assertEquals(new Integer(23), LambdaRunner.runFunction(LambdaDemo.getAgeHuman,
                 new Student("Kim", "Margo", "Leonidovna", 23, GENDER.WOMAN,
                         "FCTC", "OMSU", "Programmer")));
     }
 
     @Test
     public void runFunctionGetAgeHumanTest2() {
-        assertEquals(24, (int) LambdaRunner.runFunction(LambdaDemo.getAgeHuman,
-                new Human("Kim", "Dmitry", "Ivanovich", 24, GENDER.MAN)));
+        assertEquals(24, LambdaRunner.runFunction(LambdaDemo.getAgeHuman,
+                new Human("Kim", "Dmitry", "Ivanovich", 24, GENDER.MAN)).intValue());
     }
 
     @Test
